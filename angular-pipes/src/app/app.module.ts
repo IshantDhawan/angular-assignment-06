@@ -4,10 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './Todo/todo.component';
-import { HttpErrorHandler } from './http-error-handler.service';
-import { MessageService } from './message.service';
-import { MessagesComponent } from './messages/messages.component';
-import { SearchComponent } from './search/search.component';
 import { SortPipe } from './Pipe/sort.pipe';
 
 
@@ -21,14 +17,9 @@ import { SortPipe } from './Pipe/sort.pipe';
   declarations: [
     AppComponent,
     TodoComponent,
-    MessagesComponent,
-    SortPipe,
-    SearchComponent
+    SortPipe
   ],
-  providers: [
-    HttpErrorHandler,
-    MessageService,
-  ],
+  providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
