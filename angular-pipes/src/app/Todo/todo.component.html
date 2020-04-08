@@ -1,0 +1,44 @@
+<h2>To do Items Sorting with Pipe</h2>
+  <form novalidate [formGroup]="sortToDoForm">
+    <label> Sort : </label>
+  <input type="radio" id="ascending" name="sortOption" class="form-control" value="ascending" formControlName="sortOption" >
+  <label for="ascending">Asc</label> 
+  <input type="radio" id="descending" name="sortOption" class="form-control" value="descending" formControlName="sortOption" >
+  <label for="descending">Desc</label>
+  </form>
+<table>
+  <thead>
+  <tr>
+    <th>User Id
+      <div>
+        <button (click)="setOrder(sortToDoForm.controls.sortOption.value,'UserId')"  [disabled]="sortToDoForm.invalid">Sort</button>
+      </div>
+    </th>
+    <th>Id
+      <div>
+        <button (click)="setOrder(sortToDoForm.controls.sortOption.value,'Id')" [disabled]="sortToDoForm.invalid">Sort</button>
+      </div>
+    </th>
+    <th>Title
+      <div>
+        <button (click)="setOrder(sortToDoForm.controls.sortOption.value,'title')" [disabled]="sortToDoForm.invalid">Sort</button>
+      </div>
+    </th>
+    <th>Completed status
+      <div>
+        <button (click)="setOrder(sortToDoForm.controls.sortOption.value,'completed')" [disabled]="sortToDoForm.invalid">Sort</button>
+      </div>
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let todo of todos | async | sort : [sortToDoForm.controls.sortOption.value, item]">
+ <ng-container *ngIf = "todo.id <=10">
+    <td>{{todo.userId}}</td>
+    <td>{{todo.id}}</td>
+    <td>{{todo.title}}</td>
+    <td>{{todo.completed}}</td>
+   </ng-container>
+</tr>
+</tbody>
+</table>
